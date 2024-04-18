@@ -1,5 +1,6 @@
 package org.robolectric.config;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -78,6 +79,7 @@ public class ConfigurationRegistry {
 
     // ObjectInputStream loads classes in the current classloader by magic
     try (ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bytes))) {
+      ObjectInputFilters.enableObjectFilterIfUnprotected(in);
       return in.readObject();
     } catch (IOException | ClassNotFoundException e) {
       throw new RuntimeException(e);
