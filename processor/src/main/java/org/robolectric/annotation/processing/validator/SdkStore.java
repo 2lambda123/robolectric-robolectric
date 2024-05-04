@@ -1,5 +1,6 @@
 package org.robolectric.annotation.processing.validator;
 
+import io.github.pixee.security.BoundedLineReader;
 import static org.robolectric.annotation.Implementation.DEFAULT_SDK;
 import static org.robolectric.annotation.processing.validator.ImplementsValidator.CONSTRUCTOR_METHOD_NAME;
 import static org.robolectric.annotation.processing.validator.ImplementsValidator.STATIC_INITIALIZER_METHOD_NAME;
@@ -102,7 +103,7 @@ public class SdkStore {
           new BufferedReader(new InputStreamReader(resIn, Charset.defaultCharset()));
       List<Sdk> sdks = new ArrayList<>();
       String line;
-      while ((line = in.readLine()) != null) {
+      while ((line = BoundedLineReader.readLine(in, 5_000_000)) != null) {
         if (!line.startsWith("#")) {
           sdks.add(new Sdk(line));
         }

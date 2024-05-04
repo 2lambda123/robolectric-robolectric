@@ -1,5 +1,6 @@
 package org.robolectric.util.inject;
 
+import io.github.pixee.security.BoundedLineReader;
 import static java.util.Collections.reverseOrder;
 import static java.util.Comparator.comparing;
 
@@ -143,7 +144,7 @@ class PluginFinder {
                         new BufferedReader(
                             new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
                     while (reader.ready()) {
-                      String s = reader.readLine();
+                      String s = BoundedLineReader.readLine(reader, 5_000_000);
                       result.add(
                           Class.forName(s, false, serviceClassLoader).asSubclass(pluginType));
                     }

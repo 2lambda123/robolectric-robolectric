@@ -2,6 +2,7 @@ package org.robolectric.shadows;
 
 import static android.os.Build.VERSION_CODES.O;
 import static android.os.Build.VERSION_CODES.P;
+import io.github.pixee.security.BoundedLineReader;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 import java.io.BufferedReader;
@@ -48,7 +49,7 @@ public class ShadowTimeZoneFinder {
       try {
         is = ShadowTimeZoneFinder.class.getResourceAsStream(TZLOOKUP_PATH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is, UTF_8));
-        for (String line; (line = reader.readLine()) != null; ) {
+        for (String line; (line = BoundedLineReader.readLine(reader, 5_000_000)) != null; ) {
           stringBuilder.append(line);
         }
       } finally {
