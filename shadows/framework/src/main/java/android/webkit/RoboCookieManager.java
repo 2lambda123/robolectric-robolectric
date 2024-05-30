@@ -1,5 +1,7 @@
 package android.webkit;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -242,7 +244,7 @@ public class RoboCookieManager extends CookieManager {
     }
 
     try {
-      return new URL(url).getHost();
+      return Urls.create(url, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).getHost();
     } catch (MalformedURLException e) {
       throw new IllegalArgumentException("wrong URL : " + url, e);
     }

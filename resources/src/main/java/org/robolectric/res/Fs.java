@@ -1,6 +1,8 @@
 package org.robolectric.res;
 
 import com.google.errorprone.annotations.InlineMe;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -75,7 +77,7 @@ abstract public class Fs {
     if (urlString.startsWith("file:") || urlString.startsWith("jar:")) {
       URL url;
       try {
-        url = new URL(urlString);
+        url = Urls.create(urlString, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
       } catch (MalformedURLException e) {
         throw new RuntimeException("Failed to resolve path from " + urlString, e);
       }

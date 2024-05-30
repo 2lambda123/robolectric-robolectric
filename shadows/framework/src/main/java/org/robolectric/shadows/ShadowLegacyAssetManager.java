@@ -9,6 +9,8 @@ import static android.os.Build.VERSION_CODES.O;
 import static android.os.Build.VERSION_CODES.O_MR1;
 import static android.os.Build.VERSION_CODES.P;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import static org.robolectric.RuntimeEnvironment.castNativePtr;
 import static org.robolectric.shadow.api.Shadow.invokeConstructor;
 import static org.robolectric.util.ReflectionHelpers.ClassParameter.from;
@@ -513,7 +515,7 @@ public class ShadowLegacyAssetManager extends ShadowAssetManager {
 
   private String windowsWorkaround(String fileWithinJar) {
     try {
-      String path = new URL(new URL(fileWithinJar).getPath()).getPath();
+      String path = Urls.create(Urls.create(fileWithinJar, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).getPath(), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).getPath();
       int bangI = path.indexOf('!');
       String jarPath = path.substring(1, bangI);
       return URLDecoder.decode(URLDecoder.decode(jarPath, "UTF-8"), "UTF-8")
