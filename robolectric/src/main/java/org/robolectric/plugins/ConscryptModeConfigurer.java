@@ -29,7 +29,7 @@ public class ConscryptModeConfigurer
   private static ConscryptMode.Mode defaultValue(Properties properties) {
     String os = properties.getProperty(OS_NAME.key(), "").toLowerCase(Locale.US);
     String arch = properties.getProperty(OS_ARCH.key(), "").toLowerCase(Locale.US);
-    if (os.contains("mac") && arch.equals("aarch64")) {
+    if (os.contains("mac") && "aarch64".equals(arch)) {
       return Mode.OFF;
     }
     return Mode.ON;

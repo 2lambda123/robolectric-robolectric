@@ -44,7 +44,7 @@ class HttpRedirect extends HttpRequestBase {
 
   public HttpRedirect(final String method, final URI uri) {
     super();
-    if (method.equalsIgnoreCase(HttpHead.METHOD_NAME)) {
+    if (HttpHead.METHOD_NAME.equalsIgnoreCase(method)) {
       this.method = HttpHead.METHOD_NAME;
     } else {
       this.method = HttpGet.METHOD_NAME;

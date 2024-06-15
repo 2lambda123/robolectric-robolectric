@@ -180,7 +180,7 @@ public class DefaultNativeRuntimeLoader implements NativeRuntimeLoader {
 
   private static String arch() {
     String arch = OS_ARCH.value().toLowerCase(Locale.US);
-    if (arch.equals("x86_64") || arch.equals("amd64")) {
+    if ("x86_64".equals(arch) || "amd64".equals(arch)) {
       return "x86_64";
     }
     return arch;

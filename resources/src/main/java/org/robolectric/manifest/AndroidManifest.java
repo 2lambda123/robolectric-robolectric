@@ -243,7 +243,7 @@ public class AndroidManifest implements UsesSdk {
                 + "testOptions.unitTests.includeAndroidResources = true to your build.gradle");
       }
 
-      if (packageName == null || packageName.equals("")) {
+      if (packageName == null || "".equals(packageName)) {
         packageName = "org.robolectric.default";
       }
 

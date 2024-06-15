@@ -64,7 +64,7 @@ public class ShadowActivityThread {
           @Override
           public Object invoke(Object proxy, @Nonnull Method method, Object[] args)
               throws Exception {
-            if (method.getName().equals("getApplicationInfo")) {
+            if ("getApplicationInfo".equals(method.getName())) {
               String packageName = (String) args[0];
               int flags = ((Number) args[1]).intValue();
               if (packageName.equals(ShadowActivityThread.applicationInfo.packageName)) {
@@ -78,9 +78,9 @@ public class ShadowActivityThread {
               } catch (PackageManager.NameNotFoundException e) {
                 return null;
               }
-            } else if (method.getName().equals("notifyPackageUse")) {
+            } else if ("notifyPackageUse".equals(method.getName())) {
               return null;
-            } else if (method.getName().equals("getPackageInstaller")) {
+            } else if ("getPackageInstaller".equals(method.getName())) {
               try {
                 Class<?> iPackageInstallerClass =
                     classLoader.loadClass("android.content.pm.IPackageInstaller");
@@ -88,12 +88,12 @@ public class ShadowActivityThread {
               } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
               }
-            } else if (method.getName().equals("hasSystemFeature")) {
+            } else if ("hasSystemFeature".equals(method.getName())) {
               String featureName = (String) args[0];
               return RuntimeEnvironment.getApplication()
                   .getPackageManager()
                   .hasSystemFeature(featureName);
-            } else if (method.getName().equals("getServiceInfo")) {
+            } else if ("getServiceInfo".equals(method.getName())) {
               ComponentName componentName = (ComponentName) args[0];
               if (args[1] instanceof ComponentInfoFlags) {
                 return RuntimeEnvironment.getApplication()
@@ -148,7 +148,7 @@ public class ShadowActivityThread {
           @Override
           public Object invoke(Object proxy, @Nonnull Method method, Object[] args)
               throws Exception {
-            if (method.getName().equals("getSplitPermissions")) {
+            if ("getSplitPermissions".equals(method.getName())) {
               return Collections.emptyList();
             }
             return method.getDefaultValue();

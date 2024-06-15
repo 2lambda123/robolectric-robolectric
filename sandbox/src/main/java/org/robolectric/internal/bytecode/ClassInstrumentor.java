@@ -161,7 +161,7 @@ public class ClassInstrumentor {
       // Need Java version >=7 to allow invokedynamic
       mutableClass.classNode.version = Math.max(mutableClass.classNode.version, Opcodes.V1_7);
 
-      if (mutableClass.getName().equals("android.util.SparseArray")) {
+      if ("android.util.SparseArray".equals(mutableClass.getName())) {
         addSetToSparseArray(mutableClass);
       }
 

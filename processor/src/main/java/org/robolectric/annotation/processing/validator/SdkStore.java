@@ -176,7 +176,7 @@ public class SdkStore {
         if (!implMethod.returnType.equals(sdkMethod.returnType)) {
           if (
               (looseSignatures && typeIsOkForLooseSignatures(implMethod, sdkMethod))
-                  || (looseSignatures && implMethod.returnType.equals("java.lang.Object[]"))
+                  || (looseSignatures && "java.lang.Object[]".equals(implMethod.returnType))
                   // Number is allowed for int or long return types
                   || typeIsNumeric(sdkMethod, implMethod)) {
             return null;
@@ -205,7 +205,7 @@ public class SdkStore {
     }
 
     private static boolean typeIsNumeric(MethodExtraInfo sdkMethod, MethodExtraInfo implMethod) {
-      return implMethod.returnType.equals("java.lang.Number")
+      return "java.lang.Number".equals(implMethod.returnType)
       && isNumericType(sdkMethod.returnType);
     }
 
@@ -213,14 +213,14 @@ public class SdkStore {
         MethodExtraInfo implMethod, MethodExtraInfo sdkMethod) {
       return
           // loose signatures allow a return type of Object...
-          implMethod.returnType.equals("java.lang.Object")
+          "java.lang.Object".equals(implMethod.returnType)
               // or Object[] for arrays...
-              || (implMethod.returnType.equals("java.lang.Object[]")
+              || ("java.lang.Object[]".equals(implMethod.returnType)
                   && sdkMethod.returnType.endsWith("[]"));
     }
 
     private static boolean isNumericType(String type) {
-      return type.equals("int") || type.equals("long");
+      return "int".equals(type) || "long".equals(type);
     }
 
     /**

@@ -114,7 +114,7 @@ public class InstrumentationConfiguration {
       return true;
     }
 
-    if (name.equals("java.util.jar.StrictJarFile")) {
+    if ("java.util.jar.StrictJarFile".equals(name)) {
       return true;
     }
 
@@ -124,8 +124,8 @@ public class InstrumentationConfiguration {
     }
 
     // Hack. Fixes https://github.com/robolectric/robolectric/issues/1864
-    if (name.equals("javax.net.ssl.DistinguishedNameParser")
-        || name.equals("javax.microedition.khronos.opengles.GL")) {
+    if ("javax.net.ssl.DistinguishedNameParser".equals(name)
+        || "javax.microedition.khronos.opengles.GL".equals(name)) {
       return true;
     }
 

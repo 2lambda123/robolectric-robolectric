@@ -727,7 +727,7 @@ public final class AndroidVersions {
     String codenames = buildProps.getProperty("ro.build.version.all_codenames");
     String[] allCodeNames = codenames == null ? new String[0] : codenames.split(",");
     String[] activeCodeNames =
-        allCodeNames.length > 0 && allCodeNames[0].equals("REL") ? new String[0] : allCodeNames;
+        allCodeNames.length > 0 && "REL".equals(allCodeNames[0]) ? new String[0] : allCodeNames;
     return information.computeCurrentSdk(sdk, release, codename, asList(activeCodeNames));
   }
 
@@ -758,7 +758,7 @@ public final class AndroidVersions {
       System.out.println("build class " + buildClass);
       Class<?> versionClass = null;
       for (Class<?> c : buildClass.getClasses()) {
-        if (c.getSimpleName().equals("VERSION")) {
+        if ("VERSION".equals(c.getSimpleName())) {
           versionClass = c;
           System.out.println("Version class " + versionClass);
           break;

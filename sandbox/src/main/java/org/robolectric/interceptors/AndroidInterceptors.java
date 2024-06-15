@@ -270,11 +270,11 @@ public class AndroidInterceptors {
       String adjusted = languageCode.toLowerCase(Locale.US);
       // Map new language codes to the obsolete language
       // codes so the correct resource bundles will be used.
-      if (languageCode.equals("he")) {
+      if ("he".equals(languageCode)) {
         adjusted = "iw";
-      } else if (languageCode.equals("id")) {
+      } else if ("id".equals(languageCode)) {
         adjusted = "in";
-      } else if (languageCode.equals("yi")) {
+      } else if ("yi".equals(languageCode)) {
         adjusted = "ji";
       }
 

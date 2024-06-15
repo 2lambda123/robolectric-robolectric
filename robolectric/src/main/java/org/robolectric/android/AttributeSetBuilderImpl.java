@@ -290,7 +290,7 @@ public class AttributeSetBuilderImpl implements AttributeSetBuilder {
               } else {
                 String attrNameStr = resourceResolver.getResourceName(attrId);
                 attrResName = ResName.qualifyResName(attrNameStr, packageName, "attr");
-                attrNs = attrResName.packageName.equals("android") ? ANDROID_NS : AUTO_NS;
+                attrNs = "android".equals(attrResName.packageName) ? ANDROID_NS : AUTO_NS;
                 attrName = attrResName.name;
               }
 
