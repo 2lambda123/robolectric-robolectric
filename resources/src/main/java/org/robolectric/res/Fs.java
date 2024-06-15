@@ -120,7 +120,7 @@ abstract public class Fs {
 
   public static InputStream getInputStream(Path path) throws IOException {
     // otherwise we get ClosedByInterruptException, meh
-    if (path.toUri().getScheme().equals("file")) {
+    if ("file".equals(path.toUri().getScheme())) {
       return new BufferedInputStream(new FileInputStream(path.toFile()));
     }
     return new BufferedInputStream(Files.newInputStream(path));
@@ -160,7 +160,7 @@ abstract public class Fs {
   }
 
   public static String externalize(Path path) {
-    if (path.getFileSystem().provider().getScheme().equals("file")) {
+    if ("file".equals(path.getFileSystem().provider().getScheme())) {
       return path.toString();
     } else {
       return path.toUri().toString();

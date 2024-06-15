@@ -89,7 +89,7 @@ public class RoboCookieManager extends CookieManager {
   @Override
   public String getCookie(String url) {
     // Return null value for empty url
-    if (url == null || url.equals("")) {
+    if (url == null || "".equals(url)) {
       return null;
     }
 
@@ -223,7 +223,7 @@ public class RoboCookieManager extends CookieManager {
       String field = fields[i].trim();
       if (field.startsWith(EXPIRATION_FIELD_NAME)) {
         expiration = getExpiration(field);
-      } else if (field.equalsIgnoreCase(SECURE_ATTR_NAME)) {
+      } else if (SECURE_ATTR_NAME.equalsIgnoreCase(field)) {
         isSecure = true;
       }
     }

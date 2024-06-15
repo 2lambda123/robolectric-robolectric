@@ -79,7 +79,7 @@ public class RoutingResourceTable implements ResourceTable {
   }
 
   private PackageResourceTable pickFor(String namespace) {
-    if (namespace.equals("android.internal")) {
+    if ("android.internal".equals(namespace)) {
       return EMPTY_RESOURCE_TABLE;
     }
     PackageResourceTable resourceTable = resourceTables.get(namespace);

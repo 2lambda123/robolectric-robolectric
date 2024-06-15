@@ -68,7 +68,7 @@ public class DeprecatedMethodsCheck extends BugChecker implements ClassTreeMatch
               MethodCall surroundingMethodCall = getSurroundingMethodCall(tree, state);
 
               if (surroundingMethodCall != null
-                  && surroundingMethodCall.getName().equals("getApplicationContext")) {
+                  && "getApplicationContext".equals(surroundingMethodCall.getName())) {
                 // transform `ShadowApplication.getInstance().getApplicationContext()`
                 //  to `RuntimeEnvironment.application`:
 

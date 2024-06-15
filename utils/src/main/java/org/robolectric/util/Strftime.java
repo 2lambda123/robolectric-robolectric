@@ -334,7 +334,7 @@ public class Strftime {
           case 'w':
             String dayNumberOfWeek = formatter.format("u"); // (1-7)
             buffer.append(
-                (dayNumberOfWeek.equals("7") ? "0" : dayNumberOfWeek));
+                ("7".equals(dayNumberOfWeek) ? "0" : dayNumberOfWeek));
             break;
 
           // %W  Week number of the current year as a decimal number, (00-53).

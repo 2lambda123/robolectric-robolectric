@@ -56,7 +56,7 @@ class ResourceRemapper {
     // the reassigned values.
     Map<Integer, String> localAttributeIds = new HashMap<>();
     for (Class<?> aClass : rClass.getClasses()) {
-      if (aClass.getSimpleName().equals("attr")) {
+      if ("attr".equals(aClass.getSimpleName())) {
         for (Field field : aClass.getFields()) {
           try {
             localAttributeIds.put(field.getInt(null), field.getName());

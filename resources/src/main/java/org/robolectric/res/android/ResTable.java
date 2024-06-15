@@ -1164,7 +1164,7 @@ public class ResTable {
         return sInternalNameToIdMap.get(nameString);
       }
       if (nameString.length() > 7)
-        if (nameString.substring(1, 6).equals("index_")) {
+        if ("index_".equals(nameString.substring(1, 6))) {
           int index = Integer.getInteger(nameString.substring(7));
           if (Res_CHECKID(index)) {
             ALOGW("Array resource index: %d is too large.",

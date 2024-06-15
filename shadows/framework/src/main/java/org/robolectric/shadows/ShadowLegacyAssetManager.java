@@ -388,7 +388,7 @@ public class ShadowLegacyAssetManager extends ShadowAssetManager {
   @Implementation
   protected AssetFileDescriptor openFd(String fileName) throws IOException {
     Path path = findAssetFile(fileName);
-    if (path.getFileSystem().provider().getScheme().equals("jar")) {
+    if ("jar".equals(path.getFileSystem().provider().getScheme())) {
       path = getFileFromZip(path);
     }
     ParcelFileDescriptor parcelFileDescriptor =
@@ -1198,7 +1198,7 @@ public class ShadowLegacyAssetManager extends ShadowAssetManager {
 
     if (set != null && set.getStyleAttribute() != 0) {
       ResName styleAttributeResName = getResName(set.getStyleAttribute());
-      while (styleAttributeResName.type.equals("attr")) {
+      while ("attr".equals(styleAttributeResName.type)) {
         AttributeResource attrValue = themeStyleSet.getAttrValue(styleAttributeResName);
         if (attrValue == null) {
           throw new RuntimeException(
@@ -1218,7 +1218,7 @@ public class ShadowLegacyAssetManager extends ShadowAssetManager {
 
     if (defStyleRes != 0) {
       ResName resName = getResName(defStyleRes);
-      if (resName.type.equals("attr")) {
+      if ("attr".equals(resName.type)) {
         // todo: this should be a style resId, not an attr
         System.out.println("WARN: " + resName.getFullyQualifiedName() + " should be a style resId");
         // AttributeResource attributeValue = findAttributeValue(defStyleRes, set, styleAttrStyle, defStyleFromAttr, defStyleFromAttr, themeStyleSet);
@@ -1229,7 +1229,7 @@ public class ShadowLegacyAssetManager extends ShadowAssetManager {
         //     resName = attributeValue.getResourceReference();
         //   }
         // }
-      } else if (resName.type.equals("style")) {
+      } else if ("style".equals(resName.type)) {
         defStyleFromRes = resolveStyle(resName, themeStyleSet);
       }
     }

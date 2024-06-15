@@ -939,7 +939,7 @@ public class CppAssetManager {
       AccessMode mode) {
     Asset pAsset = null;
 
-    if (pathName.getPathExtension().toLowerCase().equals(".gz")) {
+    if (".gz".equals(pathName.getPathExtension().toLowerCase())) {
       //printf("TRYING '%s'\n", (final char*) pathName);
       pAsset = Asset.createFromCompressedFile(pathName.string(), mode);
     } else {

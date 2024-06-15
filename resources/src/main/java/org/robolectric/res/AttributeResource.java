@@ -24,7 +24,7 @@ public class AttributeResource {
 
   public AttributeResource(@Nonnull ResName resName, @Nonnull String value, @Nonnull String contextPackageName, Integer referenceResId) {
     this.referenceResId = referenceResId;
-    if (!resName.type.equals("attr")) throw new IllegalStateException("\"" + resName.getFullyQualifiedName() + "\" unexpected");
+    if (!"attr".equals(resName.type)) throw new IllegalStateException("\"" + resName.getFullyQualifiedName() + "\" unexpected");
 
     this.resName = resName;
     this.value = value;

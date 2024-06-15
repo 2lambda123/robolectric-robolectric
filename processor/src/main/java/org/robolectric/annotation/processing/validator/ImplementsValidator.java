@@ -237,8 +237,8 @@ public class ImplementsValidator extends Validator {
       }
 
       String methodName = methodElement.getSimpleName().toString();
-      if (methodName.equals(CONSTRUCTOR_METHOD_NAME)
-          || methodName.equals(STATIC_INITIALIZER_METHOD_NAME)) {
+      if (CONSTRUCTOR_METHOD_NAME.equals(methodName)
+          || STATIC_INITIALIZER_METHOD_NAME.equals(methodName)) {
         Implementation implementation = memberElement.getAnnotation(Implementation.class);
         if (implementation == null) {
           messager.printMessage(

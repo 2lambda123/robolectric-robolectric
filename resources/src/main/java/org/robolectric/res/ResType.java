@@ -30,7 +30,7 @@ public enum ResType {
     if (itemResType == ResType.CHAR_SEQUENCE) {
       if (AttributeResource.isStyleReference(itemString)) {
         itemResType = ResType.STYLE;
-      } else if (itemString.equals("@null")) {
+      } else if ("@null".equals(itemString)) {
         itemResType = ResType.NULL;
       } else if (AttributeResource.isResourceReference(itemString)) {
         // This is a reference; no type info needed.

@@ -113,8 +113,8 @@ public class ShadowWebView extends ShadowViewGroup {
                   @Override
                   public Object invoke(Object proxy, Method method, Object[] args)
                       throws Throwable {
-                    if (method.getName().equals("getViewDelegate")
-                        || method.getName().equals("getScrollDelegate")) {
+                    if ("getViewDelegate".equals(method.getName())
+                        || "getScrollDelegate".equals(method.getName())) {
                       return Proxy.newProxyInstance(
                           classLoader,
                           new Class[] {
