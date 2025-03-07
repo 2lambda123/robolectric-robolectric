@@ -43,7 +43,7 @@ apache-http-core = "4.4.16"
 apache-http-client = "4.5.14"
 
 # https://asm.ow2.io/versions.html
-asm = "9.7"
+asm = "9.7.1"
 
 # https://github.com/google/auto/releases
 auto-common = "1.2.2"
